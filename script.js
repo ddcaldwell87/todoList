@@ -3,11 +3,15 @@ var todoList = {
 	todos: [],
 	// displays todo list to console
 	displayTodos: function() {
-
+		console.log(this.todos);
 	},
 	// adds todo list items to the todos array
 	addTodos: function() {
-
+		this.todos.push({
+			todoText: todoText,
+			completed: false
+		});
+		this.displayTodos();
 	},
 	// changes a todo list item from the todos array
 	changeTodos: function(position) {
