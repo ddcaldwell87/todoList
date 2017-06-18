@@ -60,3 +60,25 @@ var todoList = {
 		}
 	}
 };
+
+// handlers to be used in the DOM
+var handlers = {
+	displayTodos: function() {
+
+	},
+	addTodos: function() {
+
+	},
+	changeTodos: function() {
+
+	},
+	deleteTodos: function() {
+
+	},
+	toggleCompleted: function() {
+
+	},
+	toggleAll: function() {
+		
+	}
+};
