@@ -20,7 +20,8 @@ var todoList = {
 	},
 	// deletes a todo list item from the todos array
 	deleteTodos: function(position) {
-
+		this.todos.splice(position, 1);
+		this.displayTodos();
 	},
 	// toggles the completed status of a todo item
 	toggleCompleted: function(position) {
