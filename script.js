@@ -25,7 +25,12 @@ var todoList = {
 	},
 	// toggles the completed status of a todo item
 	toggleCompleted: function(position) {
-
+		if (this.todos[position].completed === false) {
+			this.todos[position].completed = true;
+		} else {
+			this.todos[position].completed = false;
+		}
+		this.displayTodos();
 	},
 	// toggles all todos items completed status to true or false
 	toggleAll: function() {
