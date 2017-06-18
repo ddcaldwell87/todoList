@@ -6,7 +6,7 @@ var todoList = {
 		console.log(this.todos);
 	},
 	// adds todo list items to the todos array
-	addTodos: function() {
+	addTodos: function(todoText) {
 		this.todos.push({
 			todoText: todoText,
 			completed: false
