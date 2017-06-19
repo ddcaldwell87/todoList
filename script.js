@@ -16,7 +16,7 @@ var todoList = {
 	},
 	// changes a todo list item from the todos array
 	changeTodos: function(position, todoText) {
-		this.todos[position] = todoText;
+		this.todos[position].todoText = todoText;
 		this.displayTodos();
 	},
 	// deletes a todo list item from the todos array
