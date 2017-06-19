@@ -64,21 +64,31 @@ var todoList = {
 // handlers to be used in the DOM
 var handlers = {
 	displayTodos: function() {
-
+		todoList.displayTodos();
 	},
 	addTodos: function() {
-
+		var addTodoTextInput = document.getElementById('addTodoTextInput');
+		todoList.addTodos(addTodoTextInput.value);
+		addTodoTextInput.value = '';
 	},
 	changeTodos: function() {
-
+		var changeTodoPositionInput = document.getElementById('changeTodoPositionInput');
+		var changeTodoTextInput = document.getElementById('changeTodoTextInput');
+		todoList.changeTodos(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
+		changeTodoPositionInput.value = '';
+		changeTodoTextInput.value = '';
 	},
 	deleteTodos: function() {
-
+		var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
+		todoList.deleteTodos(deleteTodoPositionInput.valueAsNumber);
+		deleteTodoPositionInput.value = '';
 	},
 	toggleCompleted: function() {
-
+		var toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
+		todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
+		toggleCompletedPositionInput.value = '';
 	},
 	toggleAll: function() {
-		
+		todoList.toggleAll();
 	}
 };
