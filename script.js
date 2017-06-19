@@ -104,23 +104,30 @@ var handlers = {
 // object to display the view to the browser
 var view = {
 	displayTodos: function() {
+		// grab the ordered list element from the DOM
 		var todosOl = document.querySelector('ol');
+		// resets the ordered list to prevent duplicate list items
 		todosOl.innerHTML = '';
 
+		// iterates through each todo-list item and adds it as a list item to the ordered list
 		for (var i = 0; i < todoList.todos.length; i++) {
+			// creates a list item element inside the ordered list
 			var todosLi = document.createElement('li');
+			// grab each item from todo list
 			var todo = todoList.todos[i];
+			
 			var todoTextWithCompletion = '';
 
+			// displays whether the item is completed or now along with the item
 			if (todo.completed === true) {
 				todoTextWithCompletion = '(x) ' + todo.todoText;
 			} else {
 				todoTextWithCompletion = '( ) ' + todo.todoText;
 			}
 
+			// displays the item to the browser
 			todosLi.textContent = todoTextWithCompletion;
 			todosOl.appendChild(todosLi);
 		}
-
 	}
 };
