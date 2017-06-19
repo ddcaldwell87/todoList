@@ -1,4 +1,5 @@
 // object for todo list
+// manipulates data that was input into the DOM
 var todoList = {
 	todos: [],
 	// displays todo list to console
@@ -62,6 +63,7 @@ var todoList = {
 };
 
 // handlers to be used in the DOM
+// handlers methods call todoList methods to work with data input into the DOM
 var handlers = {
 	displayTodos: function() {
 		todoList.displayTodos();
