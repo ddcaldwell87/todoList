@@ -94,3 +94,8 @@ var handlers = {
 		todoList.toggleAll();
 	}
 };
+
+// object to display the view to the browser
+var view = {
+
+};
