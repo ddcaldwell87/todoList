@@ -1,6 +1,7 @@
 // object for todo list
 // manipulates data that was input into the DOM
 var todoList = {
+	// the todo list array
 	todos: [],
 	// displays todo list to console
 	displayTodos: function() {
@@ -72,6 +73,7 @@ var handlers = {
 		var addTodoTextInput = document.getElementById('addTodoTextInput');
 		todoList.addTodos(addTodoTextInput.value);
 		addTodoTextInput.value = '';
+		view.displayTodos();
 	},
 	changeTodos: function() {
 		var changeTodoPositionInput = document.getElementById('changeTodoPositionInput');
@@ -79,23 +81,46 @@ var handlers = {
 		todoList.changeTodos(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
 		changeTodoPositionInput.value = '';
 		changeTodoTextInput.value = '';
+		view.displayTodos();
 	},
 	deleteTodos: function() {
 		var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
 		todoList.deleteTodos(deleteTodoPositionInput.valueAsNumber);
 		deleteTodoPositionInput.value = '';
+		view.displayTodos();
 	},
 	toggleCompleted: function() {
 		var toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
 		todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
 		toggleCompletedPositionInput.value = '';
+		view.displayTodos();
 	},
 	toggleAll: function() {
 		todoList.toggleAll();
+		view.displayTodos();
 	}
 };
 
 // object to display the view to the browser
 var view = {
+	displayTodos: function() {
+		var todosOl = document.querySelector('ol');
+		todosOl.innerHTML = '';
 
+		for (var i = 0; i < todoList.todos.length; i++) {
+			var todosLi = document.createElement('li');
+			var todo = todoList.todos[i];
+			var todoTextWithCompletion = '';
+
+			if (todo.completed === true) {
+				todoTextWithCompletion = '(x) ' + todo.todoText;
+			} else {
+				todoTextWithCompletion = '( ) ' + todo.todoText;
+			}
+
+			todosLi.textContent = todoTextWithCompletion;
+			todosOl.appendChild(todosLi);
+		}
+
+	}
 };
