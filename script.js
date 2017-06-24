@@ -38,7 +38,7 @@ var todoList = {
 	toggleAll: function() {
 		// get total number of todo items
 		var totalTodos = this.todos.length;
-		
+
 		// how many todo items are complete
 		var completedTodos = 0;
 
@@ -115,7 +115,7 @@ var view = {
 			var todosLi = document.createElement('li');
 			// grab each item from todo list
 			var todo = todoList.todos[i];
-			
+
 			var todoTextWithCompletion = '';
 
 			// displays whether the item is completed or now along with the item
@@ -127,7 +127,14 @@ var view = {
 
 			// displays the item to the browser
 			todosLi.textContent = todoTextWithCompletion;
+			todosLi.appendChild(this.createDeleteButton());
 			todosOl.appendChild(todosLi);
 		}
+	},
+	createDeleteButton: function() {
+		var createButton = document.createElement('button');
+		createButton.textContent = 'Delete';
+		createButton.className = 'createButton';
+		return createButton;
 	}
 };
