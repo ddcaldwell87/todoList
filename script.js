@@ -43,22 +43,22 @@ var todoList = {
 		var completedTodos = 0;
 
 		// find out how many todo items are completed and add them to completedTodos
-		for (var i = 0; i < totalTodos; i++) {
-			if (this.todos[i].completed === true) {
+		this.todos.forEach(function(todo) {
+			if (todo.completed === true) {
 				completedTodos++;
 			}
-		}
+		});
 
 		// if all todo items are completed, make them uncompleted
 		if (completedTodos === totalTodos) {
-			for (var i = 0; i < totalTodos; i++) {
-				this.todos[i].completed = false;
-			}
+			this.todos.forEach(function(todo) {
+				todo.completed = false;
+			});
 		// else, make them all completed
 		} else {
-			for (var i = 0; i < totalTodos; i++) {
-				this.todos[i].completed = true;
-			}
+			this.todos.forEach(function(todo) {
+				todo.completed = true;
+			});
 		}
 	}
 };
@@ -83,10 +83,8 @@ var handlers = {
 		changeTodoTextInput.value = '';
 		view.displayTodos();
 	},
-	deleteTodos: function() {
-		var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
-		todoList.deleteTodos(deleteTodoPositionInput.valueAsNumber);
-		deleteTodoPositionInput.value = '';
+	deleteTodos: function(position) {
+		todoList.deleteTodos(position);
 		view.displayTodos();
 	},
 	toggleCompleted: function() {
@@ -132,9 +130,21 @@ var view = {
 		}
 	},
 	createDeleteButton: function() {
-		var createButton = document.createElement('button');
-		createButton.textContent = 'Delete';
-		createButton.className = 'createButton';
-		return createButton;
+		var deleteButton = document.createElement('button');
+		deleteButton.textContent = 'Delete';
+		deleteButton.className = 'deleteButton';
+		return deleteButton;
+	},
+	setUpEventListeners: function() {
+		var todosUl = document.querySelector('ol');
+
+		todosUl.addEventListener('click', function(event) {
+			var elementClicked = event.target;
+
+			if (elementClicked.className === 'deleteButton') {
+				handlers.deleteTodos(parseInt(elementClicked.parentNode.id));
+			}
+		});
 	}
 };
+view.setUpEventListeners();
