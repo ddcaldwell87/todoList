@@ -67,8 +67,13 @@ var handlers = {
 	displayTodos: function() {
 		todoList.displayTodos();
 	},
-	addTodos: function() {
+	addTodos: function(event) {
 		var addTodoTextInput = document.getElementById('addTodoTextInput');
+		addTodoTextInput.addEventListener('keypress', function(event) {
+			if (event.keyCode == 13) {
+				addTodoTextInput.click();
+			}
+		});
 		todoList.addTodos(addTodoTextInput.value);
 		addTodoTextInput.value = '';
 		view.displayTodos();
