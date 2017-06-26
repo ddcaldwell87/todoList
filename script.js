@@ -49,17 +49,15 @@ var todoList = {
 			}
 		});
 
-		// if all todo items are completed, make them uncompleted
-		if (completedTodos === totalTodos) {
-			this.todos.forEach(function(todo) {
+		this.todos.forEach(function(todo) {
+			// if all todo items are completed, make them uncompleted
+			if (completedTodos === totalTodos) {
 				todo.completed = false;
-			});
-		// else, make them all completed
-		} else {
-			this.todos.forEach(function(todo) {
+			// else, make them all completed
+			} else {
 				todo.completed = true;
-			});
-		}
+			}
+		});
 	}
 };
 
@@ -108,12 +106,9 @@ var view = {
 		todosOl.innerHTML = '';
 
 		// iterates through each todo-list item and adds it as a list item to the ordered list
-		for (var i = 0; i < todoList.todos.length; i++) {
+		todoList.todos.forEach(function(todo, position) {
 			// creates a list item element inside the ordered list
 			var todosLi = document.createElement('li');
-			// grab each item from todo list
-			var todo = todoList.todos[i];
-
 			var todoTextWithCompletion = '';
 
 			// displays whether the item is completed or now along with the item
@@ -124,10 +119,11 @@ var view = {
 			}
 
 			// displays the item to the browser
+			todosLi.id = position;
 			todosLi.textContent = todoTextWithCompletion;
 			todosLi.appendChild(this.createDeleteButton());
 			todosOl.appendChild(todosLi);
-		}
+		}, this);
 	},
 	createDeleteButton: function() {
 		var deleteButton = document.createElement('button');
